@@ -191,7 +191,7 @@ const prices: PricingCardProps[] = [
 ];
 const Home: NextPage = () => {
   const [email, setEmail] = useState("");
-  const handleOnSubmit = async (e) => {
+  const handleOnSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!email.length || !validateEmail(email)) {
       alert("Please enter your email");
