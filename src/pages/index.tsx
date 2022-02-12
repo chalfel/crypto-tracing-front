@@ -96,7 +96,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       </ul>
       <a
         href="#send-form"
-        className={`mb-5 rounded-lg bg-primary py-4 px-10 text-center  ${
+        className={`mb-5 rounded-lg bg-primary py-3 px-3 text-center lg:py-4 lg:px-10  ${
           enable
             ? "bg-primary text-black"
             : "rounded-lg border-2 border-gray-400 bg-transparent text-gray-400"
@@ -215,7 +215,7 @@ const Home: NextPage = () => {
         "Thank you for subscribing! Beta test is already full, but don't worry, we will keep in touch"
       );
     } catch (err) {
-      alert('Something went wrong, please try again later');
+      alert("Something went wrong, please try again later");
     }
   };
   return (
@@ -224,20 +224,20 @@ const Home: NextPage = () => {
         <p className="text-xl font-bold text-white">CRYPTO TRACING</p>
         <NavigationBar />
       </header>
-      <section className="mt-20 flex w-full flex-row items-center justify-between px-32">
-        <div className="flex w-1/2 flex-col">
-          <p className="text-8xl font-bold text-white">
+      <section className="mt-20 flex w-full flex-col items-center justify-center lg:flex-row lg:justify-between lg:px-32">
+        <div className="mb-12 flex w-full flex-col px-10 lg:mb-0 lg:w-1/2 lg:px-0">
+          <p className="text-6xl font-bold text-white lg:text-8xl">
             Tracing anywhere. Insights for everyone.
           </p>
-          <div className="mt-12 flex flex-row">
+          <div className="mt-12 flex flex-col lg:flex-row">
             <a
-              className="w-44 rounded-lg bg-primary py-4 text-center text-black"
+              className="mx-4 mb-4 flex w-full items-center justify-center rounded-lg bg-primary py-4 text-center text-black lg:mb-0 lg:w-44"
               href="#send-form"
             >
               START TRACING
             </a>
             <a
-              className="ml-10 w-44 rounded-lg border-2 bg-transparent py-4 text-center text-white"
+              className="mx-4 flex w-full items-center justify-center rounded-lg border-2 bg-transparent py-4 text-center text-white lg:ml-10 lg:w-44"
               href="https://discord.gg/9Z34BbhB4U"
               target="_blank"
               rel="noreferrer"
@@ -248,13 +248,13 @@ const Home: NextPage = () => {
         </div>
         <Image src="/crypto.svg" height={600} width={600} alt="crypto" />
       </section>
-      <section className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20">
+      <section className="my-10 flex w-full flex-row items-center justify-center px-14 py-6 lg:my-20 lg:px-32 lg:py-20">
         <div className="container mx-auto">
-          <div className="flex flex-row items-center justify-between">
-            <p className="w-6/12 text-6xl font-bold text-white">
+          <div className="flex flex-col items-center justify-between lg:flex-row">
+            <p className="mb-6 w-full text-5xl font-bold text-white lg:mb-0 lg:w-6/12 lg:text-6xl">
               Start to trace your favorite cryptos
             </p>
-            <div className="w-1/3">
+            <div className="w-full lg:w-1/3">
               <p className="text-xl text-white">
                 Crypto tracing is the fastest way to stay in touch with all your
                 favorite cryptos changes
@@ -265,11 +265,11 @@ const Home: NextPage = () => {
       </section>
       <section
         id="benefits"
-        className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20"
+        className="my-10 flex  w-full flex-col items-center justify-center px-14 py-6 lg:my-20 lg:flex-row lg:px-32 lg:py-20"
       >
         <div className="container mx-auto flex flex-col items-center justify-center">
           <h2 className="text-3xl font-bold text-white">Benefits</h2>
-          <div className="container mt-14 flex flex-row items-center justify-center gap-x-20">
+          <div className="container mt-14 flex flex-col items-center justify-center gap-y-20 lg:flex-row lg:gap-y-0 lg:gap-x-20">
             <BenefitCard
               Icon={FiBell}
               title="Alerts"
@@ -288,36 +288,36 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20">
+      <section className="my-10 flex w-full flex-row items-center justify-center px-14 py-6 lg:my-20 lg:px-32 lg:py-20">
         <div
           className="container mx-auto flex flex-col items-center justify-center"
           id="pricing"
         >
           <h2 className="text-3xl font-bold text-white">Pricing</h2>
-          <div className="mt-12 flex flex-row justify-between gap-x-10">
+          <div className="mt-12 flex flex-col justify-between gap-y-10 lg:flex-row lg:gap-y-0 lg:gap-x-10">
             {prices.map((price) => (
               <PricingCard {...price} key={price.title} />
             ))}
           </div>
         </div>
       </section>
-      <section className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20">
+      <section className="my-10 flex w-full flex-row items-center justify-center px-14 py-6 lg:my-20 lg:px-32 lg:py-20">
         <div className="container mx-auto flex flex-col items-center justify-center">
           <h2 className="mb-14 text-3xl font-bold text-white">JOIN BETA</h2>
           <form
-            className="flex w-full flex-row items-center justify-center gap-x-5"
+            className="flex w-full flex-col items-center justify-center gap-x-5 lg:flex-row"
             id="send-form"
           >
             <input
               placeholder="Type your best e-mail"
               value={email}
-              className="w-2/5 rounded-lg border border-gray-500 bg-transparent py-4 px-2 text-xl text-white"
+              className="mb-10 w-full rounded-lg border border-gray-500 bg-transparent py-4 px-2 text-xl text-white lg:mb-0 lg:w-2/5"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
             <button
               type="button"
-              className="rounded-lg bg-primary py-4 px-10 text-center text-black"
+              className="w-full rounded-lg bg-primary py-4 px-10 text-center text-black lg:w-auto"
               onClick={handleOnSubmit}
             >
               JOIN NOW
@@ -338,10 +338,10 @@ export type BenefitCardProps = {
 };
 const BenefitCard = ({ title, description, Icon }: BenefitCardProps) => {
   return (
-    <div className="flex w-80 flex-col items-center rounded-md border border-gray-500 p-10 shadow-md shadow-primary">
+    <div className="flex w-full flex-col items-center rounded-md border border-gray-500 px-10 py-12 shadow shadow-primary lg:w-80 lg:p-10">
       <Icon className="text-md mb-6 text-4xl text-white" />
       <h3 className="mb-4 text-2xl font-bold text-white">{title}</h3>
-      <p className="w-3/4 text-lg text-gray-300">{description}</p>
+      <p className="w-3/4 text-center text-lg text-gray-300">{description}</p>
     </div>
   );
 };
