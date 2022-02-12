@@ -6,6 +6,8 @@ import { FiCheck, FiCrosshair, FiBell } from "react-icons/fi";
 import { BiDevices } from "react-icons/bi";
 import { IoDocumentOutline } from "react-icons/io5";
 import { IconType } from "react-icons";
+import { validateEmail } from "../common/regex";
+import axios from "axios";
 
 const NavigationBar = () => {
   return (
@@ -30,7 +32,9 @@ const NavigationBar = () => {
         <li className="font-bold text-white">
           <a
             className="text-white decoration-transparent hover:text-muted-primary"
-            href="#discord"
+            href="https://discord.gg/9Z34BbhB4U"
+            target="_blank"
+            rel="noreferrer"
           >
             Discord
           </a>
@@ -187,6 +191,33 @@ const prices: PricingCardProps[] = [
 ];
 const Home: NextPage = () => {
   const [email, setEmail] = useState("");
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.length || !validateEmail(email)) {
+      alert("Please enter your email");
+      return;
+    }
+    try {
+      await axios.post(
+        "https://crypto-lead-store.herokuapp.com/",
+        {
+          email,
+          from: "crypto-tracing",
+        },
+        {
+          headers: {
+            Authorization: "piper",
+          },
+        }
+      );
+      setEmail("");
+      alert(
+        "Thank you for subscribing! Beta test is already full, but don't worry, we will keep in touch"
+      );
+    } catch (err) {
+      alert('Something went wrong, please try again later');
+    }
+  };
   return (
     <main className="h-full w-full bg-background">
       <header className="flex w-full flex-row items-center justify-between px-16 pt-5">
@@ -199,12 +230,20 @@ const Home: NextPage = () => {
             Tracing anywhere. Insights for everyone.
           </p>
           <div className="mt-12 flex flex-row">
-            <button className="w-44 rounded-lg bg-primary py-4 text-center text-black">
+            <a
+              className="w-44 rounded-lg bg-primary py-4 text-center text-black"
+              href="#send-form"
+            >
               START TRACING
-            </button>
-            <button className="ml-10 w-44 rounded-lg border-2 bg-transparent py-4 text-center text-white ">
+            </a>
+            <a
+              className="ml-10 w-44 rounded-lg border-2 bg-transparent py-4 text-center text-white"
+              href="https://discord.gg/9Z34BbhB4U"
+              target="_blank"
+              rel="noreferrer"
+            >
               JOIN DISCORD
-            </button>
+            </a>
           </div>
         </div>
         <Image src="/crypto.svg" height={600} width={600} alt="crypto" />
@@ -249,10 +288,11 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
-      <section
-        className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20"
-      >
-        <div className="container mx-auto flex flex-col items-center justify-center" id="pricing">
+      <section className="my-20 mt-20 flex w-full flex-row items-center justify-center px-32 py-20">
+        <div
+          className="container mx-auto flex flex-col items-center justify-center"
+          id="pricing"
+        >
           <h2 className="text-3xl font-bold text-white">Pricing</h2>
           <div className="mt-12 flex flex-row justify-between gap-x-10">
             {prices.map((price) => (
@@ -275,7 +315,11 @@ const Home: NextPage = () => {
               type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="rounded-lg bg-primary py-4 px-10 text-center text-black">
+            <button
+              type="button"
+              className="rounded-lg bg-primary py-4 px-10 text-center text-black"
+              onClick={handleOnSubmit}
+            >
               JOIN NOW
             </button>
           </form>
