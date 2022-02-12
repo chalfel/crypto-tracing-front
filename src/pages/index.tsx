@@ -12,7 +12,7 @@ import axios from "axios";
 const NavigationBar = () => {
   return (
     <nav>
-      <ul className="flex flex-row gap-5">
+      <ul className="lg:flex flex-row gap-3 lg:gap-5 hidden">
         <li className="font-bold text-white">
           <a
             className="text-white decoration-transparent hover:text-muted-primary"
@@ -226,8 +226,8 @@ const Home: NextPage = () => {
       <meta name="robots" content= "index, follow"/>
     </Head>
       <main className="h-full w-full bg-background">
-        <header className="flex w-full flex-row items-center justify-between px-16 pt-5">
-          <p className="text-xl font-bold text-white">CRYPTO TRACING</p>
+        <header className="flex w-full flex-row items-center justify-center lg:justify-between px-2 lg:px-16 pt-5">
+          <a href="" className="text-2xl lg:text-md font-bold text-white">CRYPTO TRACING</a>
           <NavigationBar />
         </header>
         <section className="mt-20 flex w-full flex-col items-center justify-center lg:flex-row lg:justify-between lg:px-32">
